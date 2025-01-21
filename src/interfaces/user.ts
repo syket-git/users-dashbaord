@@ -20,22 +20,15 @@ export interface PaginationMeta {
   limit: number;
 }
 
-export interface SortConfig<T> {
-  field: keyof T | "";
-  direction: "asc" | "des" | "";
-}
-
 export interface UsersState {
   data: User[];
   loading: boolean;
   error: string | null;
   paginationMeta: PaginationMeta;
-  sortConfig: SortConfig<User>;
   searchTerm: string;
 }
 
 export interface UseUsersReturn extends UsersState {
   handleSearch: (value: string) => void;
-  handleSort: (field: keyof User) => void;
   handlePageChange: (page: number) => void;
 }

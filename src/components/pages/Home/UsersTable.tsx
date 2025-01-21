@@ -1,23 +1,16 @@
-import { useSortableHeader } from "@/hooks/useSortableHeader";
-import { SortConfig, User } from "@/interfaces/user";
+import { useTableHeader } from "@/hooks/useTableHeader";
+import { User } from "@/interfaces/user";
 
 import { Flex, Table, Text } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
-import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 interface UsersTableProps {
   data: User[];
-  sortConfig: SortConfig<User>;
-  onSort: (field: keyof User) => void;
 }
 
-export const UsersTable: FC<UsersTableProps> = ({
-  data,
-  sortConfig,
-  onSort,
-}) => {
-  const { columns } = useSortableHeader();
+export const UsersTable: FC<UsersTableProps> = ({ data }) => {
+  const { columns } = useTableHeader();
   const router = useRouter();
 
   return (
@@ -26,21 +19,8 @@ export const UsersTable: FC<UsersTableProps> = ({
         <Table.Row>
           {columns.map(({ field, label, align }) => (
             <Table.ColumnHeader key={field}>
-              <Flex
-                as="span"
-                className="sortable"
-                onClick={() => onSort(field)}
-                cursor="pointer"
-                alignItems="center"
-                justify={align || "start"}
-              >
+              <Flex as="span" alignItems="center" justify={align || "start"}>
                 <Text mr={2}>{label}</Text>
-                {sortConfig.field === field &&
-                  (sortConfig.direction === "asc" ? (
-                    <FaArrowUp />
-                  ) : (
-                    <FaArrowDown />
-                  ))}
               </Flex>
             </Table.ColumnHeader>
           ))}

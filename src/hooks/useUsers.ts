@@ -1,9 +1,8 @@
 import { PaginationMeta, User, UsersState } from "@/interfaces/user";
 import { getUsers } from "@/services/user";
-import { sortData } from "@/utils/sortData";
 
 import { debounce } from "lodash";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const initialPaginationMeta: PaginationMeta = {
   total: 0,
@@ -12,19 +11,24 @@ const initialPaginationMeta: PaginationMeta = {
   limit: 10,
 };
 
-const initialState: UsersState = {
-  data: [],
-  loading: false,
-  error: null,
-  paginationMeta: initialPaginationMeta,
-  sortConfig: { field: "", direction: "" },
-  searchTerm: "",
-};
+export const useUsers = ({
+  users,
+  pagination,
+}: {
+  users: User[];
+  pagination: PaginationMeta;
+}) => {
+  const initialState: UsersState = {
+    data: users || [],
+    loading: false,
+    error: null,
+    paginationMeta: pagination || initialPaginationMeta,
+    searchTerm: "",
+  };
 
-export const useUsers = () => {
-  //   const toast = useToast();
   const [state, setState] = useState<UsersState>(initialState);
   const [pageIndex, setPageIndex] = useState(1);
+  const isInitialRender = useRef(true); // Flag to track the initial render
 
   const debouncedFetch = useMemo(
     () =>
@@ -52,21 +56,19 @@ export const useUsers = () => {
             paginationMeta: initialPaginationMeta,
             loading: false,
           }));
-
-          //   toast({
-          //     title: "Error",
-          //     description: errorMessage,
-          //     status: "error",
-          //     duration: 5000,
-          //     isClosable: true,
-          //   });
         }
       }, 300),
     []
   );
 
   useEffect(() => {
+    if (isInitialRender.current) {
+      // Skip the API call on the initial render
+      isInitialRender.current = false;
+      return;
+    }
     debouncedFetch(state.searchTerm, pageIndex);
+
     return () => {
       debouncedFetch.cancel();
     };
@@ -77,17 +79,6 @@ export const useUsers = () => {
     setPageIndex(1);
   }, []);
 
-  const handleSort = useCallback((field: keyof User) => {
-    setState((prev) => {
-      const { sortedData, direction } = sortData(field, prev.data);
-      return {
-        ...prev,
-        data: sortedData,
-        sortConfig: { field, direction },
-      };
-    });
-  }, []);
-
   const handlePageChange = useCallback((page: number) => {
     setPageIndex(page);
   }, []);
@@ -95,7 +86,6 @@ export const useUsers = () => {
   return {
     ...state,
     handleSearch,
-    handleSort,
     handlePageChange,
     currentPage: pageIndex,
   };

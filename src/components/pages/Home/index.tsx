@@ -3,23 +3,28 @@
 import Pagination from "@/components/reusable/Pagination";
 
 import { useUsers } from "@/hooks/useUsers";
+import { PaginationMeta, User } from "@/interfaces/user";
 import { Flex, Spinner, Text } from "@chakra-ui/react";
 import UsersHeader from "./UserHeader";
 import { UsersTable } from "./UsersTable";
 
-const UsersPage = () => {
+const UsersPage = ({
+  users,
+  pagination,
+}: {
+  users: User[];
+  pagination: PaginationMeta;
+}) => {
   const {
     data,
     loading,
     error,
     paginationMeta,
-    sortConfig,
     searchTerm,
     currentPage,
     handleSearch,
-    handleSort,
     handlePageChange,
-  } = useUsers();
+  } = useUsers({ users, pagination });
 
   return (
     <>
@@ -40,7 +45,7 @@ const UsersPage = () => {
           <Spinner size="lg" />
         </Flex>
       ) : (
-        <UsersTable data={data} sortConfig={sortConfig} onSort={handleSort} />
+        <UsersTable data={data} />
       )}
 
       <Pagination

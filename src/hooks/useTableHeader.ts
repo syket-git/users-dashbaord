@@ -7,7 +7,7 @@ interface Column {
   align?: "start" | "end";
 }
 
-export const useSortableHeader = () => {
+export const useTableHeader = () => {
   const columns: Column[] = useMemo(
     () => [
       { field: "id", label: "ID" },

@@ -17,7 +17,7 @@ import { FaArrowLeft } from "react-icons/fa";
 const UserDetailsPage = ({ data: user }: { data: User }) => {
   const router = useRouter();
   const handleBack = () => {
-    router.back();
+    router.push("/");
   };
 
   return (
