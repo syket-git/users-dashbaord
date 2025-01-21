@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### User Dashboard 🚀  
 
-## Getting Started
+A modern **User Dashboard** built using **Next.js**, **Chakra UI**, and **TypeScript**, leveraging the latest **Next.js App Router** for dynamic routing and enhanced performance.  
 
-First, run the development server:
+🌟 **Live Demo**: [User Dashboard](https://users-dashbaord.vercel.app/)  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features ✨  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Light & Dark Mode**: Seamlessly switch between themes for a personalized experience.  
+- **Next.js App Router**: Utilize the latest **App Router** for improved routing and data-fetching capabilities.  
+- **Next.js Server Components**: Leverage server-side rendering for optimal performance and SEO benefits.  
+- **Pagination**: Smooth and intuitive pagination for displaying large datasets efficiently.
+- **Robust Type Safety**: Built with **TypeScript**, ensuring reliable, maintainable, and scalable code.  
+- **Single Responsibility Pattern**: Focused components, each designed with a single purpose for better reusability.  
+- **Separation of Concerns**: Maintain clean and modular code by separating business logic from the presentation layer.  
+- **Custom Hooks**: Encapsulate business logic into reusable hooks to simplify and enhance maintainability.  
+- **Chakra UI for Design**: Responsive and accessible UI powered by Chakra UI for a professional look and feel.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Tech Stack 🛠  
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework**: [Next.js](https://nextjs.org/)  
+- **Router**: Next.js **App Router**  
+- **UI Library**: [Chakra UI](https://chakra-ui.com/)  
+- **Language**: [TypeScript](https://www.typescriptlang.org/)  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure 📂  
 
-## Deploy on Vercel
+```plaintext  
+├── app/                 # Next.js App Router structure  
+│   ├── layout.tsx       # Root layout configuration  
+│   ├── page.tsx         # Main page file  
+│   ├── dashboard/       # Dashboard-related pages  
+├── components/          # Reusable UI components  
+├── hooks/               # Custom hooks for business logic   
+```  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Installation & Setup 💻  
+
+1. Clone the repository:  
+   ```bash  
+   git clone https://github.com/syket-git/users-dashbaord.git
+   ```  
+
+2. Navigate to the project directory:  
+   ```bash  
+   cd user-dashboard  
+   ```  
+
+3. Install dependencies:  
+   ```bash  
+   npm install  
+   ```  
+
+4. Run the development server:  
+   ```bash  
+   npm run dev  
+   ```  
+
+5. Open your browser and navigate to `http://localhost:3000`.  
+
+---
+
+## Deployment 🚀  
+
+This project is deployed on **Vercel**, ensuring fast and reliable hosting. Explore the live version here:  
+👉 [https://users-dashbaord.vercel.app/](https://users-dashbaord.vercel.app/)  
+
+
+---
+
+### Author 💡  
+
+Created by **[Syket Bhattachergee](https://github.com/syket-git)**  
+
+**Light Theme**
+![image](https://github.com/user-attachments/assets/07026088-c7e5-4763-8637-9fb7a9fd83bb)
+**Dark Theme**
+![image](https://github.com/user-attachments/assets/fe125486-e261-4bb3-8473-f0667a4edd1e)
