@@ -1,5 +1,3 @@
-"use client";
-
 import HomePage from "@/components/pages/Home";
 import { Container } from "@chakra-ui/react";
 

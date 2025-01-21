@@ -1,3 +1,5 @@
+"use client";
+
 import Pagination from "@/components/reusable/Pagination";
 
 import { useUsers } from "@/hooks/useUsers";

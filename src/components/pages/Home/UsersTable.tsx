@@ -2,6 +2,7 @@ import { useSortableHeader } from "@/hooks/useSortableHeader";
 import { SortConfig, User } from "@/interfaces/user";
 
 import { Flex, Table, Text } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import { FC } from "react";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
@@ -17,6 +18,7 @@ export const UsersTable: FC<UsersTableProps> = ({
   onSort,
 }) => {
   const { columns } = useSortableHeader();
+  const router = useRouter();
 
   return (
     <Table.Root size="sm" variant="outline" striped>
@@ -48,7 +50,11 @@ export const UsersTable: FC<UsersTableProps> = ({
       <Table.Body>
         {data.length ? (
           data.map((item) => (
-            <Table.Row key={item.id}>
+            <Table.Row
+              cursor="pointer"
+              onClick={() => router.push(`/user/${item?.id}`)}
+              key={item.id}
+            >
               <Table.Cell>{item.id}</Table.Cell>
               <Table.Cell>{item.name}</Table.Cell>
               <Table.Cell>{item.email}</Table.Cell>
